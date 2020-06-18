@@ -242,7 +242,6 @@
 
         if (typeof options.showCustomRangeLabel === 'boolean')
             this.showCustomRangeLabel = options.showCustomRangeLabel;
-
         if (typeof options.singleDatePicker === 'boolean') {
             this.singleDatePicker = options.singleDatePicker;
             if (this.singleDatePicker)
@@ -620,6 +619,12 @@
                 }
                 this.leftCalendar.month.hour(hour).minute(minute).second(second);
                 this.rightCalendar.month.hour(hour).minute(minute).second(second);
+            }
+
+            if (this.singleDatePicker) {
+              this.container.find('.drp-calendar.right').hide();
+            } else {
+              this.container.find('.drp-calendar.right').show();
             }
 
             if (this.singleCalendar) {
