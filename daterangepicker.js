@@ -112,7 +112,6 @@
                     '<div class="calendar-time"></div>' +
                 '</div>' +
                 '<div class="drp-buttons">' +
-                    '<span class="drp-selected"></span>' +
                     '<button class="cancelBtn" type="button"></button>' +
                     '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
                 '</div>' +
@@ -520,8 +519,6 @@
 
             this.previousRightTime = this.endDate.clone();
 
-            this.container.find('.drp-selected').html(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(this.locale.format));
-
             if (!this.isShowing)
                 this.updateElement();
 
@@ -546,8 +543,6 @@
                     this.container.find('.right .calendar-time select').removeAttr('disabled').removeClass('disabled');
                 }
             }
-            if (this.endDate)
-                this.container.find('.drp-selected').html(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(this.locale.format));
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
