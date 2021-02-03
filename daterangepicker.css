@@ -17,11 +17,6 @@
   line-height: 1em;
 }
 
-.dark-mode {
-  background-color: red;
-  border: 1px solid maroon;
-}
-
 .daterangepicker:before, .daterangepicker:after {
   position: absolute;
   display: inline-block;

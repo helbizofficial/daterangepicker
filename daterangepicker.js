@@ -285,6 +285,9 @@
         if (typeof options.alwaysShowCalendars === 'boolean')
             this.alwaysShowCalendars = options.alwaysShowCalendars;
 
+        if (typeof options.isDarkMode === 'boolean')
+            this.isDarkMode = options.isDarkMode;
+
         // update day names order to firstDay
         if (this.locale.firstDay != 0) {
             var iterator = this.locale.firstDay;
@@ -645,6 +648,11 @@
         },
 
         renderCalendar: function(side) {
+
+            // Add dark mode if specified
+            this.isDarkMode
+              ? this.container.addClass('dark-mode')
+              : this.container.removeClass('dark-mode');
 
             //
             // Build the matrix of dates that will populate the calendar
