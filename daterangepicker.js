@@ -56,6 +56,7 @@
         this.alwaysShowCalendars = false;
         this.ranges = {};
         this.singleCalendar = false;
+        this.isDarkMode = false;
 
         this.opens = 'right';
         if (this.element.hasClass('pull-right'))
@@ -116,6 +117,8 @@
                     '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
                 '</div>' +
             '</div>';
+
+        if (this.isDarkMode) $(options.template).addClass("dark-mode");
 
         this.parentEl = (options.parentEl && $(options.parentEl).length) ? $(options.parentEl) : $(this.parentEl);
         this.container = $(options.template).appendTo(this.parentEl);
