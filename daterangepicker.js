@@ -56,6 +56,7 @@
         this.alwaysShowCalendars = false;
         this.ranges = {};
         this.singleCalendar = false;
+        this.isDarkMode = false;
 
         this.opens = 'right';
         if (this.element.hasClass('pull-right'))
@@ -111,11 +112,12 @@
                     '<div class="calendar-time"></div>' +
                 '</div>' +
                 '<div class="drp-buttons">' +
-                    '<span class="drp-selected"></span>' +
                     '<button class="cancelBtn" type="button"></button>' +
                     '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
                 '</div>' +
             '</div>';
+
+        if (this.isDarkMode) $(options.template).addClass("dark-mode");
 
         this.parentEl = (options.parentEl && $(options.parentEl).length) ? $(options.parentEl) : $(this.parentEl);
         this.container = $(options.template).appendTo(this.parentEl);
@@ -281,6 +283,9 @@
 
         if (typeof options.alwaysShowCalendars === 'boolean')
             this.alwaysShowCalendars = options.alwaysShowCalendars;
+
+        if (typeof options.isDarkMode === 'boolean')
+            this.isDarkMode = options.isDarkMode;
 
         // update day names order to firstDay
         if (this.locale.firstDay != 0) {
@@ -514,8 +519,6 @@
 
             this.previousRightTime = this.endDate.clone();
 
-            this.container.find('.drp-selected').html(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(this.locale.format));
-
             if (!this.isShowing)
                 this.updateElement();
 
@@ -540,8 +543,6 @@
                     this.container.find('.right .calendar-time select').removeAttr('disabled').removeClass('disabled');
                 }
             }
-            if (this.endDate)
-                this.container.find('.drp-selected').html(this.startDate.format(this.locale.format) + this.locale.separator + this.endDate.format(this.locale.format));
             this.updateMonthsInView();
             this.updateCalendars();
             this.updateFormInputs();
@@ -642,6 +643,11 @@
         },
 
         renderCalendar: function(side) {
+
+            // Add dark mode if specified
+            this.isDarkMode
+              ? this.container.addClass('dark-mode')
+              : this.container.removeClass('dark-mode');
 
             //
             // Build the matrix of dates that will populate the calendar
