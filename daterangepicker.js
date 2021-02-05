@@ -111,10 +111,10 @@
                     '<div class="calendar-table"></div>' +
                     '<div class="calendar-time"></div>' +
                 '</div>' +
-                '<div class="drp-buttons">' +
-                    '<button class="cancelBtn" type="button"></button>' +
-                    '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
-                '</div>' +
+//                 '<div class="drp-buttons">' +
+//                     '<button class="cancelBtn" type="button"></button>' +
+//                     '<button class="applyBtn" disabled="disabled" type="button"></button> ' +
+//                 '</div>' +
             '</div>';
 
         if (this.isDarkMode) $(options.template).addClass("dark-mode");
